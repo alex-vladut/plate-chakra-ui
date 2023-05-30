@@ -1,0 +1,78 @@
+{
+  "name": "plate-chakra-ui",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "./src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/plate-chakra-ui"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "plate-chakra-ui:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "plate-chakra-ui:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "plate-chakra-ui:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "plate-chakra-ui:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "plate-chakra-ui:build:development"
+        },
+        "production": {
+          "buildTarget": "plate-chakra-ui:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["coverage/plate-chakra-ui"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "coverage/plate-chakra-ui"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["./src/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "plate-chakra-ui:build"
+      }
+    }
+  },
+  "tags": []
+}

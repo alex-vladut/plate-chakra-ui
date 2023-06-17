@@ -1,16 +1,13 @@
-import styled from '@emotion/styled';
+import { Box, ChakraProvider } from '@chakra-ui/react';
+import FullTextEditor from './FullTextEditor';
 
-import NxWelcome from './nx-welcome';
-
-const StyledApp = styled.div`
-  // Your style here
-`;
-
-export function App() {
+function App() {
   return (
-    <StyledApp>
-      <NxWelcome title="plate-chakra-ui" />
-    </StyledApp>
+    <ChakraProvider>
+      <Box p="4">
+        <FullTextEditor id="editor" />
+      </Box>
+    </ChakraProvider>
   );
 }
 
